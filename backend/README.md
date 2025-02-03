@@ -103,3 +103,41 @@ Description: Invalid email or password.
   "message": "Invalid email or password"
 }
 ```
+
+# User Profile Endpoint
+## Endpoint: /users/profile
+## Method: GET
+### Description:
+This endpoint is used to get the profile of the logged-in user. It requires authentication and returns the user's details.
+
+###  Responses:
+Success (200 OK):
+Description: User profile retrieved successfully.
+``` json     
+{
+  "user": {
+    "_id": "user_id",
+    "fullname": {
+      "firstname": "John",
+      "lastname": "Doe"
+    },
+    "email": "john.doe@example.com",
+    "socketId": null
+  }
+}
+ ```
+# User Logout Endpoint
+## Endpoint: /users/logout
+## Method: GET
+### Description:
+This endpoint is used to log out the user. It clears the authentication token and blacklists it.
+
+### Responses:
+Success (200 OK):
+Description: User logged out successfully.
+Body:
+```json     
+{
+  "message": "Logged out successfully"
+}
+```
