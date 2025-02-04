@@ -141,3 +141,67 @@ Body:
   "message": "Logged out successfully"
 }
 ```
+# Captain Registration Endpoint
+## Endpoint: /captains/register
+## Method: POST
+### Description:
+This endpoint is used to register a new captain. It validates the input data, hashes the captain's password, creates a new captain in the database, and returns a JSON response with the captain details and an authentication token.
+
+### Request Body:
+The request body should be a JSON object with the following fields:
+
+fullname: An object containing:
+firstname: A string with a minimum length of 3 characters.
+lastname: A string with a minimum length of 3 characters.
+email: A valid email address.
+password: A string with a minimum length of 6 characters.
+vehicle: An object containing:
+color: A string with a minimum length of 3 characters.
+plate: A string with a minimum length of 3 characters.
+capacity: An integer with a minimum value of 1.
+vehicleType: A string that must be either 'car', 'bike', or 'auto'.
+Example:
+
+``` json   
+{
+  "fullname": {
+    "firstname": "Jane",
+    "lastname": "Doe"
+  },
+  "email": "jane.doe@example.com",
+  "password": "password123",
+  "vehicle": {
+    "color": "red",
+    "plate": "XYZ123",
+    "capacity": 4,
+    "vehicleType": "car"
+  }
+}
+ ```
+
+### Responses:
+Success (201 Created):
+Description: Captain registered successfully.
+Body
+``` json  
+{
+  "captain": {
+    "_id": "captain_id",
+    "fullname": {
+      "firstname": "Jane",
+      "lastname": "Doe"
+    },
+    "email": "jane.doe@example.com",
+    "password": "hashed_password",
+    "vehicle": {
+      "color": "red",
+      "plate": "XYZ123",
+      "capacity": 4,
+      "vehicleType": "car"
+    },
+    "status": "offline",
+    "socketId": null
+  },
+  "token": "auth_token"
+}
+  ```
