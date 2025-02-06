@@ -205,3 +205,59 @@ Body
   "token": "auth_token"
 }
   ```
+
+# Captain Profile Endpoint
+## Endpoint: /captains/profile
+### Method: GET
+### Description:
+This endpoint is used to get the profile of the logged-in captain. It requires authentication and returns the captain's details.
+
+### Responses:
+Success (200 OK):
+Description: Captain profile retrieved successfully.
+Body:
+
+``` json    
+
+{
+  "captain": {
+    "_id": "captain_id",
+    "fullname": {
+      "firstname": "Jane",
+      "lastname": "Doe"
+    },
+    "email": "jane.doe@example.com",
+    "vehicle": {
+      "color": "red",
+      "plate": "XYZ123",
+      "capacity": 4,
+      "vehicleType": "car"
+    },
+    "status": "offline",
+    "socketId": null
+  }
+}
+```
+# Captain Logout Endpoint
+## Endpoint: /captains/logout
+### Method: GET
+### Description:
+This endpoint is used to log out the captain. It clears the authentication token and blacklists it.
+
+### Responses:
+Success (200 OK):
+Description: Captain logged out successfully.
+Body
+``` json
+{
+  "message": "Captain logged out successfully"
+}
+ ```
+### Error (401 Unauthorized):
+Description: Unauthorized access.
+Body:
+``` json 
+{
+  "message": "unauthorized access"
+}
+```
